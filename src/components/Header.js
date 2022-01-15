@@ -1,10 +1,18 @@
 import React from "react";
 
-function Header() {
+function Header(props) {
+  const { score, highScore } = props;
+
   return (
     <header>
-      <img className="header-icon" alt="icon" />
-      <div className="header">Disney Memory Game</div>
+      <div className="header">
+        <img className="header-icon" alt="icon" />
+        <div className="header-title">Disney Memory Game</div>
+      </div>
+      <div className="score">
+        <div className="current-score">Score: {score}</div>
+        <div className="high-score">High Score: {highScore}</div>
+      </div>
     </header>
   );
 }

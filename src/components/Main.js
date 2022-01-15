@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import fetchDisney from "./fetch";
 
-export default function Main() {
+export default function Main(props) {
+  const { score, setScore, highScore, setHighScore } = props;
+
   const [characters, setCharacters] = useState(null);
   const [loading, setLoading] = useState(true);
   const [newChars, setNewChars] = useState(false);
+  const [gameArray, setGameArray] = useState([]);
 
   useEffect(async () => {
     try {
@@ -26,16 +29,29 @@ export default function Main() {
   }, [newChars]);
 
   function shuffleCharacters(array) {
-    const currentArray = [...array];
+    const newArray = [...array];
 
-    for (let i = currentArray.length - 1; i > 0; i--) {
+    for (let i = newArray.length - 1; i > 0; i--) {
       const x = Math.floor(Math.random() * (i + 1));
-      const temp = currentArray[i];
-      currentArray[i] = currentArray[x];
-      currentArray[x] = temp;
+      const temp = newArray[i];
+      newArray[i] = newArray[x];
+      newArray[x] = temp;
     }
 
-    setCharacters(currentArray);
+    setCharacters(newArray);
+  }
+
+  function gameLogic(e) {
+    if (gameArray.includes(e.target.id)) {
+      setGameArray([]);
+      if (score > highScore) setHighScore(score);
+      setScore(0);
+    } else {
+      const newArray = [...gameArray];
+      newArray.push(e.target.id);
+      setGameArray(newArray);
+      setScore((prevScore) => prevScore + 1);
+    }
   }
 
   if (loading) return <span>loading</span>;
@@ -51,15 +67,27 @@ export default function Main() {
         New characters
       </button>
       {characters.map((chars) => (
-        <div aria-hidden className="character" key={chars.id}>
-          <img
-            aria-hidden
-            src={chars.imageUrl}
-            alt="character pic"
-            onClick={() => shuffleCharacters(characters)}
-          />
+        <div className="character" key={chars["_id"]}>
+          <div
+            role="button"
+            onClick={(e) => {
+              shuffleCharacters(characters);
+              gameLogic(e);
+            }}
+            tabIndex={0}
+            onKeyDown={() => {}}
+          >
+            <img
+              // aria-hidden
+              id={chars["_id"]}
+              src={chars.imageUrl}
+              alt={chars.name}
+            />
+          </div>
           <div className="character-name">{chars.name}</div>
-          <div className="character-show">{chars.tvShows[0]}</div>
+          <div className="character-show">
+            {chars.tvShows.length > 0 ? chars.tvShows[0] : "Unknown"}
+          </div>
         </div>
       ))}
     </div>
