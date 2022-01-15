@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest/globals": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -19,6 +20,8 @@
     "rules": {
         "prettier/prettier": "warn",
         "react/jsx-filename-extension": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "no-unused-vars": "warn",
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
     }
 }
