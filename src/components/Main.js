@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import fetchDisney from "./fetch";
 
 export default function Main(props) {
-  const { score, setScore, highScore, setHighScore } = props;
+  const { score, setScore, highScore, setHighScore, difficulty } = props;
 
   const [characters, setCharacters] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -10,23 +10,18 @@ export default function Main(props) {
   const [gameArray, setGameArray] = useState([]);
 
   useEffect(async () => {
-    try {
-      setLoading(true);
+    setLoading(true);
 
-      const array = [];
+    const array = [];
 
-      for (let i = 0; i < 16; i += 1) {
-        const data = fetchDisney();
-        array.push(data);
-      }
-
-      setCharacters(await Promise.all(array));
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
+    for (let i = 0; i < difficulty; i++) {
+      const data = fetchDisney();
+      array.push(data);
     }
-  }, [newChars]);
+
+    setCharacters(await Promise.all(array));
+    setLoading(false);
+  }, [difficulty, newChars]);
 
   function shuffleCharacters(array) {
     const newArray = [...array];
@@ -67,7 +62,7 @@ export default function Main(props) {
         New characters
       </button>
       {characters.map((chars) => (
-        <div className="character" key={chars["_id"]}>
+        <div className="character" key={chars._id}>
           <div
             role="button"
             onClick={(e) => {
@@ -77,12 +72,7 @@ export default function Main(props) {
             tabIndex={0}
             onKeyDown={() => {}}
           >
-            <img
-              // aria-hidden
-              id={chars["_id"]}
-              src={chars.imageUrl}
-              alt={chars.name}
-            />
+            <img id={chars._id} src={chars.imageUrl} alt={chars.name} />
           </div>
           <div className="character-name">{chars.name}</div>
           <div className="character-show">

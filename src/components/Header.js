@@ -1,7 +1,7 @@
 import React from "react";
 
 function Header(props) {
-  const { score, highScore } = props;
+  const { score, highScore, difficulty, setDifficulty } = props;
 
   return (
     <header>
@@ -12,6 +12,17 @@ function Header(props) {
       <div className="score">
         <div className="current-score">Score: {score}</div>
         <div className="high-score">High Score: {highScore}</div>
+        <input
+          type="range"
+          className="difficulty-slider"
+          defaultValue={difficulty}
+          onMouseUp={(e) => {
+            setDifficulty(e.target.value);
+          }}
+          min="4"
+          max="32"
+          step="4"
+        />
       </div>
     </header>
   );

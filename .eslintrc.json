@@ -22,9 +22,11 @@
         "react/jsx-filename-extension": "off",
         "react/react-in-jsx-scope": "off",
         "no-unused-vars": "warn",
-        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-        "react/prop-types": "warn",
-        "dot-notation": "warn"
+        "no-plusplus": "off",
+        "react/prop-types": "off",
+        "dot-notation": "warn",
+        "no-underscore-dangle": "off",
+        "no-await-in-loop": "warn"
     }
     
 }
