@@ -1,0 +1,109 @@
+@font-face {
+  font-family: "DidneyFont";
+  src: url(./font/NewWaltDisneyFontRegular-BPen.ttf);
+}
+html {
+  color: white;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+}
+
+body, #root, .app {
+  height: 100%
+}
+header {
+  background-color: #0000005b;
+  height: 18%;
+  width: 99%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) ;
+  justify-items: center;
+  align-items: center;
+  padding: 3% 1%;
+}
+
+.header:nth-child(1) {
+  grid-column-start: 2;
+}
+.score-options:nth-child(2) {
+  grid-column-start: 3;
+}
+
+.score-options {
+  padding-right: 5%;
+  margin-left: auto;
+}
+
+.header {
+  font-family: "DidneyFont";
+  font-size: xx-large;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.setting-icon {
+  display: none;
+}
+
+.difficulty {
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  gap: 5%
+}
+
+.new-character {
+  background-color: #00000000;
+  border: 1px solid silver;
+  border-radius: 12px;
+  padding: 1% 3%;
+  color:white
+}
+
+.new-character:hover {
+  background-color: rgba(255, 255, 255, 0.219);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./img/castle.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: hidden;
+}
+
+.characters {
+  height: 100%;
+  width: 100vw;
+  /* padding: 2%; */
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-evenly;
+  margin: 2% 0;
+  overflow-y: auto;
+}
+
+.char-img {
+  width: 200px;
+  height: 200px;
+  object-fit:cover
+}
+
+.character {
+
+  background-color:#0000005b;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  margin: 10px 0;
+}

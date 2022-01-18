@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import fetchDisney from "./fetch";
 
 export default function Main(props) {
-  const { score, setScore, highScore, setHighScore, difficulty } = props;
+  const { score, setScore, highScore, setHighScore, difficulty, newChars } =
+    props;
 
   const [characters, setCharacters] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [newChars, setNewChars] = useState(false);
   const [gameArray, setGameArray] = useState([]);
+
+  function scoreLogic() {
+    return score > highScore ? (setHighScore(score), setScore(0)) : setScore(0);
+  }
 
   useEffect(async () => {
     setLoading(true);
+    scoreLogic();
 
     const array = [];
 
@@ -39,8 +44,7 @@ export default function Main(props) {
   function gameLogic(e) {
     if (gameArray.includes(e.target.id)) {
       setGameArray([]);
-      if (score > highScore) setHighScore(score);
-      setScore(0);
+      scoreLogic();
     } else {
       const newArray = [...gameArray];
       newArray.push(e.target.id);
@@ -49,18 +53,18 @@ export default function Main(props) {
     }
   }
 
-  if (loading) return <span>loading</span>;
+  if (loading) return <div className="characters">Loading Characters</div>;
 
-  if (!characters) return <span>Data Not available</span>;
+  if (!characters)
+    return (
+      <div className="characters">
+        API not available. Try again by refreshing the page or pressing &quot
+        New Characters &quot
+      </div>
+    );
 
   return (
     <div className="characters">
-      <button
-        type="button"
-        onClick={() => (newChars ? setNewChars(false) : setNewChars(true))}
-      >
-        New characters
-      </button>
       {characters.map((chars) => (
         <div className="character" key={chars._id}>
           <div
@@ -72,7 +76,12 @@ export default function Main(props) {
             tabIndex={0}
             onKeyDown={() => {}}
           >
-            <img id={chars._id} src={chars.imageUrl} alt={chars.name} />
+            <img
+              className="char-img"
+              id={chars._id}
+              src={chars.imageUrl}
+              alt={chars.name}
+            />
           </div>
           <div className="character-name">{chars.name}</div>
           <div className="character-show">

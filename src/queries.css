@@ -1,0 +1,45 @@
+@media screen and (max-width: 700px) {
+  .characters {
+    grid-template-columns: auto;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 26%;
+  }
+  .header {
+    gap: 4%;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .difficulty, .new-character {
+    display: none;
+  }
+  .score-options {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: unset;
+    padding-right: 0
+  }
+  .setting-icon {
+    padding: 10px 0 0 ;
+    display:block;
+    height: 30px
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1100px) {
+  .characters {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+
