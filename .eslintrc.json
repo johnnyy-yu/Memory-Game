@@ -28,5 +28,4 @@
         "no-underscore-dangle": "off",
         "no-await-in-loop": "warn"
     }
-    
 }
