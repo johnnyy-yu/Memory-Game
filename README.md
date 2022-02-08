@@ -4,7 +4,7 @@ An application/game that puts your memory to the test.
 
 <h2>How To Play</h2>
 
-You are presented with multiple images of celebrities. The images get shuffled every-time they are clicked. You CAN NOT click on any image more than once or else your score resets to zero. The main objective is to get the highest score as possible.
+You are presented with multiple images of characters. The images get shuffled every-time they are clicked. You CAN NOT click on any image more than once or else your score resets to zero. The main objective is to get the highest score as possible.
 
 
 To see a live demo: https://jylx-x.github.io/Memory-Game/
