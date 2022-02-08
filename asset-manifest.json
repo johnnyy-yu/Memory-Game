@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Memory-Game/static/css/main.dab2ce27.css",
+    "main.js": "/Memory-Game/static/js/main.2f31887d.js",
+    "static/media/castle.jpeg": "/Memory-Game/static/media/castle.4bfc43b94c1d58b00c8d.jpeg",
+    "static/media/NewWaltDisneyFontRegular-BPen.ttf": "/Memory-Game/static/media/NewWaltDisneyFontRegular-BPen.5f6745bdfda03a98a1c1.ttf",
+    "index.html": "/Memory-Game/index.html",
+    "main.dab2ce27.css.map": "/Memory-Game/static/css/main.dab2ce27.css.map",
+    "main.2f31887d.js.map": "/Memory-Game/static/js/main.2f31887d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dab2ce27.css",
+    "static/js/main.2f31887d.js"
+  ]
+}
